@@ -44,7 +44,7 @@ const convertStateDbObjectToResponseObject = dbObject => {
   }
 }
 
-const convertStateDbObjectToResponseObject = dbObject => {
+const convertDistrictDbObjectToResponseObject = dbObject => {
   return {
     districtId: dbObject.district_id,
 
@@ -89,7 +89,7 @@ function authenticateToken(request, response, next) {
 app.post('/login/', async (request, response) => {
   const {username, password} = request.body
 
-  const selectUserQuery = `SELECT * FROM user WHERE username = '${username}';`
+  selectUserQuery = `SELECT * FROM user WHERE username = '${username}';`
   const databaseUser = await database.get(selectUserQuery)
 
   if (databaseUser === undefined) {
